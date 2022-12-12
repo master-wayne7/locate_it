@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:locate_it_user_1/loading_screen.dart';
@@ -16,16 +16,19 @@ String? finalEmail;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(
-    MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Locate It",
-        themeMode: ThemeMode.system,
-        home: const MyHomePage(),
-        // home: const MapTwo(),
-        theme:
-            ThemeData(primaryColor: const Color.fromARGB(255, 158, 239, 255))),
-  );
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(
+      MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Locate It",
+          themeMode: ThemeMode.system,
+          home: const MyHomePage(),
+          // home: const MapTwo(),
+          theme: ThemeData(
+              primaryColor: const Color.fromARGB(255, 158, 239, 255))),
+    );
+  });
 }
 
 class MyHomePage extends StatefulWidget {

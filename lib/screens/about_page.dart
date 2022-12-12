@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -20,7 +22,7 @@ class AboutPage extends StatelessWidget {
         padding: const EdgeInsets.all(18.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
               'About',
               style: TextStyle(color: Colors.black, fontSize: 35),
@@ -63,7 +65,42 @@ class AboutPage extends StatelessWidget {
             ),
             Text(
                 'Team Members:-\n-Priyansh Saxena\n-Narendra Patel\n-Ronit Rameja\n-Riya Ameta\n-Vansh Arora\n-Vikas Sahu',
-                style: TextStyle(color: Colors.black, fontSize: 15))
+                style: TextStyle(color: Colors.black, fontSize: 15)),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Feedback:',
+              style: TextStyle(fontSize: 25),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            // Text(),
+            // Text(
+            //   '',
+            //   style: TextStyle(),
+            // ),
+            RichText(
+              text: TextSpan(
+                text:
+                    '''Give your valuable feedbacks and suggestion on this email: ''',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+                // style: DefaultTextStyle.of(context).style,
+                children: [
+                  TextSpan(
+                      text: 'synergypnrrvv@gmail.com',
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          // launch('mailto:synergypnrrvv@gmail.com');
+                        }
+                      // onEnter: (event) {},
+                      ),
+                  // TextSpan(text: ' world!'),
+                ],
+              ),
+            )
           ],
         ),
       ),
