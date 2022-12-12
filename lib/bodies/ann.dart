@@ -83,76 +83,81 @@ class _AnnouncementState extends State<Announcement> {
   final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
-    return RawScrollbar(
-      controller: _scrollController,
-      radius: const Radius.circular(25.0),
-      thickness: 7,
-      // thumbColor: const Color.fromARGB(255, 177, 177, 177),
-      // thumbVisibility: true,
-      child: StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("notification")
-            .orderBy('createdOn', descending: true)
-            .snapshots(),
-        builder: (context, AsyncSnapshot snapshot) {
-          return !snapshot.hasData
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : ListView.builder(
-                  controller: _scrollController,
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(17)),
-                      elevation: 2,
-                      margin: const EdgeInsets.only(
-                          top: 10.0, left: 10, right: 15, bottom: 3),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 9, vertical: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Admin:',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '''${snapshot.data!.docs[index]['message']}''',
-                              style: const TextStyle(fontSize: 15),
-                            ),
-                            snapshot.data!.docs[index]['link'] == ''
-                                ? const SizedBox()
-                                : TextButton(
-                                    onPressed: (() {
-                                      openFile(
-                                          url: snapshot.data!.docs[index]
-                                              ['link'],
-                                          fileName: snapshot.data!.docs[index]
-                                              ['message']);
-                                    }),
-                                    child: const Text("Tap to download")),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                snapshot.data!.docs[index]['createdOn'] == null
-                                    ? Text(
-                                        '''${DateTime.now().day}/${DateTime.now().month}   ${DateTime.now().hour.toString()}:${DateTime.now().minute.toString().padLeft(2, '0')}''')
-                                    : Text(
-                                        '''${snapshot.data!.docs[index]['createdOn'].toDate().day}/${snapshot.data!.docs[index]['createdOn'].toDate().month}   ${snapshot.data!.docs[index]['createdOn'].toDate().hour.toString()}:${snapshot.data!.docs[index]['createdOn'].toDate().minute.toString().padLeft(2, '0')}''',
-                                      ),
-                              ],
-                            ),
-                          ],
+    return Container(
+      color: Color.fromARGB(255, 232, 232, 232),
+      child: RawScrollbar(
+        controller: _scrollController,
+        radius: const Radius.circular(25.0),
+        thickness: 7,
+        thumbColor: const Color.fromARGB(255, 177, 177, 177),
+        // thumbVisibility: true,
+        child: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection("notification")
+              .orderBy('createdOn', descending: true)
+              .snapshots(),
+          builder: (context, AsyncSnapshot snapshot) {
+            return !snapshot.hasData
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ListView.builder(
+                    controller: _scrollController,
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        // color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17)),
+                        elevation: 10,
+                        margin: const EdgeInsets.only(
+                            top: 10.0, left: 10, right: 15, bottom: 3),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 9, vertical: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Admin:',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                '''${snapshot.data!.docs[index]['message']}''',
+                                style: const TextStyle(fontSize: 15),
+                              ),
+                              snapshot.data!.docs[index]['link'] == ''
+                                  ? const SizedBox()
+                                  : TextButton(
+                                      onPressed: (() {
+                                        openFile(
+                                            url: snapshot.data!.docs[index]
+                                                ['link'],
+                                            fileName: snapshot.data!.docs[index]
+                                                ['message']);
+                                      }),
+                                      child: const Text("Tap to download")),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  snapshot.data!.docs[index]['createdOn'] ==
+                                          null
+                                      ? Text(
+                                          '''${DateTime.now().day}/${DateTime.now().month}   ${DateTime.now().hour.toString()}:${DateTime.now().minute.toString().padLeft(2, '0')}''')
+                                      : Text(
+                                          '''${snapshot.data!.docs[index]['createdOn'].toDate().day}/${snapshot.data!.docs[index]['createdOn'].toDate().month}   ${snapshot.data!.docs[index]['createdOn'].toDate().hour.toString()}:${snapshot.data!.docs[index]['createdOn'].toDate().minute.toString().padLeft(2, '0')}''',
+                                        ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                );
-        },
+                      );
+                    },
+                  );
+          },
+        ),
       ),
     );
   }
