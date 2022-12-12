@@ -9,14 +9,15 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(
-        leading: BackButton(color: Colors.black),
+        leading: const BackButton(color: Colors.black),
         title: Text(
           "About Page",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Color.fromARGB(255, 158, 239, 255),
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
@@ -46,7 +47,7 @@ class AboutPage extends StatelessWidget {
               style: TextStyle(color: Colors.black, fontSize: 25),
             ),
             Text(
-              'V1.0.0',
+              '1.0.0 Alpha version (Under development)',
               style: TextStyle(color: Colors.black, fontSize: 15),
             ),
             SizedBox(
@@ -57,7 +58,7 @@ class AboutPage extends StatelessWidget {
               style: TextStyle(color: Colors.black, fontSize: 25),
             ),
             Text(
-              '''Team Synergy''',
+              '''Synergy''',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 17,
@@ -71,39 +72,39 @@ class AboutPage extends StatelessWidget {
             ),
             Text(
               'Feedback:',
-              style: TextStyle(fontSize: 25),
+              style: TextStyle(color: Colors.black, fontSize: 25),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            // Text(),
-            // Text(
-            //   '',
-            //   style: TextStyle(),
+            // Text('priyanshsaxena40@gmail.com',
+            //     style: TextStyle(color: Colors.black, fontSize: 15)),
+            // ElevatedButton(
+            //     onPressed: () {
+            //       launch('mailto:priyanshsaxena40@gmail.com');
+            //     },
+            //     child: Text('send mail')),
+            // GestureDetector(
+            //   onTap: () {
+            //     launch('mailto:priyanshsaxena40@gmail.com');
+            //   },
+            //   child: Text('priyanshsaxena40@gmail.com'),
             // ),
             RichText(
-              text: TextSpan(
-                text:
-                    '''Give your valuable feedbacks and suggestion on this email: ''',
-                style: TextStyle(color: Colors.black, fontSize: 15),
-                // style: DefaultTextStyle.of(context).style,
-                children: [
-                  TextSpan(
-                      text: 'synergypnrrvv@gmail.com',
-                      style: TextStyle(color: Colors.blue),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          // launch('mailto:synergypnrrvv@gmail.com');
-                        }
-                      // onEnter: (event) {},
-                      ),
-                  // TextSpan(text: ' world!'),
-                ],
-              ),
-            )
+                text: TextSpan(
+                    text:
+                        '''Give your valuable feedbacks and suggestion on this email:''',
+                    style: TextStyle(color: Colors.black, fontSize: 15),
+                    children: [
+                      TextSpan(
+                          text: 'synergypnrrvv@gmail.com',
+                          style: TextStyle(color: Colors.blue),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              // ignore: deprecated_member_use
+                              launch('mailto:synergypnrrvv@gmail.com');
+                            })
+                    ]))
           ],
         ),
       ),
-    );
+    ));
   }
 }
