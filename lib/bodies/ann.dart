@@ -113,8 +113,8 @@ class _AnnouncementState extends State<Announcement> {
                         margin: const EdgeInsets.only(
                             top: 10.0, left: 10, right: 15, bottom: 3),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 9, vertical: 15),
+                          padding: const EdgeInsets.only(
+                              left: 9, right: 8, top: 15, bottom: 7),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -125,7 +125,7 @@ class _AnnouncementState extends State<Announcement> {
                               ),
                               Text(
                                 '''${snapshot.data!.docs[index]['message']}''',
-                                style: const TextStyle(fontSize: 15),
+                                style: const TextStyle(fontSize: 16),
                               ),
                               snapshot.data!.docs[index]['link'] == ''
                                   ? const SizedBox()
@@ -144,9 +144,12 @@ class _AnnouncementState extends State<Announcement> {
                                   snapshot.data!.docs[index]['createdOn'] ==
                                           null
                                       ? Text(
-                                          '''${DateTime.now().day}/${DateTime.now().month}   ${DateTime.now().hour.toString()}:${DateTime.now().minute.toString().padLeft(2, '0')}''')
+                                          '''${DateTime.now().day}/${DateTime.now().month}   ${DateTime.now().hour.toString()}:${DateTime.now().minute.toString().padLeft(2, '0')}''',
+                                          // style: const TextStyle(fontSize: ),
+                                        )
                                       : Text(
                                           '''${snapshot.data!.docs[index]['createdOn'].toDate().day}/${snapshot.data!.docs[index]['createdOn'].toDate().month}   ${snapshot.data!.docs[index]['createdOn'].toDate().hour.toString()}:${snapshot.data!.docs[index]['createdOn'].toDate().minute.toString().padLeft(2, '0')}''',
+                                          style: TextStyle(fontSize: 11),
                                         ),
                                 ],
                               ),
