@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,7 +12,7 @@ class AboutPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: const BackButton(color: Colors.black),
-        title: Text(
+        title: const Text(
           "About Page",
           style: TextStyle(color: Colors.black),
         ),
@@ -26,35 +24,35 @@ class AboutPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Version:',
                 style: TextStyle(color: Colors.black, fontSize: 25),
               ),
-              Text(
+              const Text(
                 'V1.0.0',
                 style: TextStyle(color: Colors.black, fontSize: 15),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 'Made by:',
                 style: TextStyle(color: Colors.black, fontSize: 25),
               ),
-              Text(
+              const Text(
                 '''Synergy''',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                     fontWeight: FontWeight.bold),
               ),
-              Text(
+              const Text(
                   'Team Members:-\n-Priyansh Saxena\n-Narendra Patel\n-Ronit Rameja\n-Riya Ameta\n-Vansh Arora\n-Vikas Sahu',
                   style: TextStyle(color: Colors.black, fontSize: 15)),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 'Feedback:',
                 style: TextStyle(color: Colors.black, fontSize: 25),
               ),
@@ -62,11 +60,11 @@ class AboutPage extends StatelessWidget {
                 text: TextSpan(
                   text:
                       '''Give your valuable feedbacks and suggestion on this email:  ''',
-                  style: TextStyle(color: Colors.black, fontSize: 15),
+                  style: const TextStyle(color: Colors.black, fontSize: 15),
                   children: [
                     TextSpan(
                       text: 'synergypnrrvv@gmail.com',
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.blue,
                           decoration: TextDecoration.underline),
                       recognizer: TapGestureRecognizer()
@@ -85,7 +83,7 @@ class AboutPage extends StatelessWidget {
           bottom: 20,
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: Center(
+            child: const Center(
               child: SizedBox(
                 height: 100,
                 width: 100,
