@@ -84,7 +84,7 @@ class _AnnouncementState extends State<Announcement> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 232, 232, 232),
+      color: const Color.fromARGB(255, 232, 232, 232),
       child: RawScrollbar(
         controller: _scrollController,
         radius: const Radius.circular(25.0),
@@ -149,7 +149,7 @@ class _AnnouncementState extends State<Announcement> {
                                         )
                                       : Text(
                                           '''${snapshot.data!.docs[index]['createdOn'].toDate().day}/${snapshot.data!.docs[index]['createdOn'].toDate().month}   ${snapshot.data!.docs[index]['createdOn'].toDate().hour.toString()}:${snapshot.data!.docs[index]['createdOn'].toDate().minute.toString().padLeft(2, '0')}''',
-                                          style: TextStyle(fontSize: 11),
+                                          style: const TextStyle(fontSize: 11),
                                         ),
                                 ],
                               ),

@@ -28,6 +28,9 @@ void main() async {
           theme: ThemeData(
               primaryColor: const Color.fromARGB(255, 158, 239, 255))),
     );
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
   });
 }
 
