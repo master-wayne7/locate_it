@@ -65,7 +65,7 @@ class _MapsState extends State<Maps> {
   int count = 0;
 
   PolylinePoints polylinePoints = PolylinePoints();
-  String googleAPiKey = "AIzaSyDkj5oFjAVLELUaeVZgJ17XwTFNjPduon4";
+  String googleAPiKey = "API-KEY";
   Set<Polyline> polylines = <Polyline>{};
   List<Map> firePoints = [];
   List<LatLng> polylineCoordinates = [];

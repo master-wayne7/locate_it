@@ -4,6 +4,11 @@ A new Flutter project.
 
 ## Getting Started
 
+To use this app do following steps:
+1. Enter your api key for google maps in AndroidManifest.xml file and maps.dart file.
+2. Add your email-id in sign_up.dart file for otp verification.
+3. Add your google_services.json file to connect it to your firebase.
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
