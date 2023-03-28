@@ -10,9 +10,7 @@ import '../controller/map_controller.dart';
 class DatabaseServices {
   // final ref = FirebaseDatabase.instance.ref('BUS');
   // ignore: deprecated_member_use
-  final ref = FirebaseDatabase(
-          databaseURL:
-              "https://locate-it-e063c-default-rtdb.asia-southeast1.firebasedatabase.app")
+  final ref = FirebaseDatabase(databaseURL: "")
       // ignore: deprecated_member_use
       .ref("BUS");
 
